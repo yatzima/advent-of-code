@@ -26,35 +26,28 @@ def main():
         second_comp = example[split:]
     
         a = [priority_map[elm] for elm in set(first_comp)]
-        a.sort()
-        
         b = [priority_map[elm] for elm in set(second_comp)]
-        b.sort()
-    
-        for elm1 in a:
-            for elm2 in b:
-                if elm1 == elm2:
-                    total_a.append(elm1)
+
+        a = set(a)
+        b = set(b)
+
+        total_a.append(list(a.intersection(b))[0])
     solution_1 = str(sum(total_a))
     
     total_b = []
     for i in range(0, len(data), 3):
         example = data[i:i+3]
-        a = [priority_map[elm] for elm in set(example[0])]
-        a.sort()
-    
-        b = [priority_map[elm] for elm in set(example[1])]
-        b.sort()
 
+        a = [priority_map[elm] for elm in set(example[0])]
+        b = [priority_map[elm] for elm in set(example[1])]
         c = [priority_map[elm] for elm in set(example[2])]
-        c.sort()
-    
-        for elm1 in a:
-            for elm2 in b:
-                if elm1 == elm2:
-                    for elm3 in c:
-                        if elm1 == elm3:
-                            total_b.append(elm1)
+
+        a = set(a)
+        b = set(b)
+        c = set(c)
+
+        total_b.append(list(a.intersection(b).intersection(c))[0])
+
     solution_2 = str(sum(total_b))
     
     write_data(solution_1, solution_2)
