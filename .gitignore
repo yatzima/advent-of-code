@@ -130,3 +130,5 @@ dmypy.json
 
 # Do not include sketch notebooks
 Untitled.ipynb
+
+*.DS_Store
